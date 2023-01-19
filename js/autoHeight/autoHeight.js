@@ -1,4 +1,4 @@
-const autoHeight = (attr) => {
+const autoHeight = (attr = '') => {
     const elements = [...document.querySelectorAll(`[data-auto-height=${attr}]`)]
     let elementsHeight = elements.map(element => element.offsetHeight)
     let height = Math.max.apply(null, elementsHeight)
@@ -6,4 +6,6 @@ const autoHeight = (attr) => {
     elements.forEach(element => element.style.height = `${height}px`)
 }
 
-export { autoHeight }
+const autoHeightArray = (attrs = ['']) => attrs.forEach(attr => autoHeight(attr))
+
+export { autoHeight, autoHeightArray }
